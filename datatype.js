@@ -60,3 +60,18 @@ let person={name:"Alice", age:25};
 function name(parent){
     return "Child of " + parent;
 }
+
+//Dynamic Typing
+let temp_d = "name";
+temp_d = 456;
+temp_d = {};
+
+//javascript typescript
+
+//truthy vs falsy values
+//0, false, "", null, undefined, NaN --> falsy values.all,--false
+//ex. !!0 -- chack value is true or false
+//ex. if(null){}, js convert it into false
+//ex. if(-1){}, js convert it into true
+//all --> true.
+
