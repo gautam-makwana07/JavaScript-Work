@@ -1,21 +1,25 @@
 # 1. Initialize (if new folder)
+
 git init
 git remote add origin https://github.com/username/repo.git
 
 # 2. Add all files
+
 git add .
 
 # 3. Commit
+
 git commit -m "Add JavaScript tutorials"
 
 # 4. Push
-git push -u origin main
 
+git push -u origin main
 
 # JavaScript Variables & Scope (Perfect Edition) ✨
 
 ## 🎯 Variable Naming Rules
-```javascript
+
+````javascript
 // ✅ VALID
 var a = "temp";
 var _12 = "Hello World";
@@ -48,7 +52,7 @@ const temp_const = "Hello World";
 **Key Demo:**
 ```javascript
 let a=10, b=a; a+=3; // b=10 (copy)
-let x=, y=x; y.pop(); // x= (same memory)
+let x=, y=x; y.pop(); // x= (same memory) ```
 
 **Perfect file created!** 📁 Clean, colorful, professional, and college-project ready!
 
@@ -74,3 +78,4 @@ if (x > 5 && **y > 5**) {  // 🔥 Both check
 *💡 Perfect for React: `{user && isAdmin && <Admin/>}`*
 
 
+````
