@@ -1,244 +1,393 @@
-# JavaScript Learning Journey 🚀
+# JavaScript Functions Examples 🚀
 
 ## 📚 Overview
 
-This repository contains a comprehensive collection of JavaScript concepts, examples, and exercises designed to help beginners master the core fundamentals of JavaScript. Each file focuses on a specific topic, providing clear examples and explanations.
+This repository contains a comprehensive collection of JavaScript function examples, designed to help beginners and intermediate developers understand various types of functions, their syntax, and use cases. The `function.js` file demonstrates key concepts such as function declarations, expressions, arrow functions, parameters, rest parameters, closures, and more.
 
 ## 🛠️ Getting Started
 
 1. **Clone the repository** to your local machine.
 2. **Open `index.html`** in your preferred web browser.
 3. **Open the Developer Console** (F12 or Right Click -> Inspect -> Console) to view the output of the scripts.
-4. **Select a Topic**: Open `index.html` in a code editor and uncomment the `<script>` tag for the topic you want to explore (e.g., `<script src="function.js"></script>`).
+4. **Run the Examples**: Uncomment the `<script src="function.js"></script>` tag in `index.html` to execute the function examples.
 
 ## 📖 Table of Contents
 
-- [Variables](#-variables)
-- [Data Types](#-data-types)
-- [Operators](#-operators)
-- [Control Flow](#-control-flow)
-- [Loops](#-loops)
-- [Functions](#-functions)
+- [What is a Function?](#-what-is-a-function)
+- [Types of Functions](#-types-of-functions)
+- [Parameters vs Arguments](#-parameters-vs-arguments)
+- [Default Parameters](#-default-parameters)
+- [Rest Parameters](#-rest-parameters)
+- [Early Return](#-early-return)
+- [First-Class Functions](#-first-class-functions)
+- [Higher-Order Functions (HOF)](#-higher-order-functions-hof)
+- [Pure vs Impure Functions](#-pure-vs-impure-functions)
+- [Closures](#-closures)
+- [Lexical Scope](#-lexical-scope)
+- [Immediately Invoked Function Expressions (IIFE)](#-immediately-invoked-function-expressions-iife)
+- [Hoisting](#-hoisting)
+- [Examples](#-examples)
 
 ---
 
-## 📊 Variables
+## ❓ What is a Function?
 
-**File:** `script.js`
+A function is a block of code designed to perform a particular task. Functions help avoid repetition, make code modular, and reusable.
 
-Understanding how to declare and manage variables in JavaScript, including scoping and hoisting.
+### How to Define a Function
 
-### Variable Declarations
-
-- **var**: Function-scoped, can be redeclared and updated. Hoisted to the top of the function.
-- **let**: Block-scoped, can be updated but not redeclared. Hoisted but not initialized (Temporal Dead Zone).
-- **const**: Block-scoped, cannot be updated or redeclared. Must be initialized at declaration.
-
-```javascript
-var a = "Hello"; // Function scope
-let b = 10; // Block scope
-const c = true; // Block scope, immutable
-```
-
-### Hoisting
-
-- **var**: Hoisted and initialized with `undefined`.
-- **let/const**: Hoisted but not initialized, causing ReferenceError if accessed before declaration.
+- **Function Keyword**: `function`
+- **Name**: Identifier for the function
+- **Parameters**: Placeholders for inputs (optional)
+- **Body**: Code to execute
+- **Return Statement**: Optional value to return
 
 ```javascript
-console.log(x); // undefined (var is hoisted)
-var x = 5;
-
-console.log(y); // ReferenceError (let is hoisted but not initialized)
-let y = 10;
-```
-
-### Scoping
-
-- **Global Scope**: Accessible everywhere.
-- **Function Scope**: Accessible within the function.
-- **Block Scope**: Accessible within the block (let/const).
-
-```javascript
-if (true) {
-  var globalVar = "global";
-  let blockVar = "block";
-}
-console.log(globalVar); // "global"
-console.log(blockVar); // ReferenceError
-```
-
----
-
-## 🧬 Data Types
-
-**File:** `datatype.js`
-
-Understanding the fundamental building blocks of JavaScript data handling.
-
-### Primitive Types (Pass by Value)
-
-- **Number**: Integers and floating-point numbers (e.g., `100`, `45.67`).
-- **String**: Text data enclosed in quotes (e.g., `"Hello"`, `'JS'`, `` `Template Literal` ``).
-- **Boolean**: Logical values (`true`, `false`).
-- **Null**: Represents the intentional absence of any object value.
-- **Undefined**: A variable that has not been assigned a value.
-- **Symbol**: Unique and immutable primitives.
-- **BigInt**: Integers too large to be represented by the Number primitive.
-
-### Non-Primitive Types (Pass by Reference)
-
-- **Array**: Ordered lists of values (e.g., `[1, 2, 3]`).
-- **Object**: Key-value pairs (e.g., `{ name: "John", age: 30 }`).
-- **Function**: Blocks of code designed to perform a task.
-
-### Truthy and Falsy Values
-
-- **Falsy Values**: `0`, `false`, `""`, `null`, `undefined`, `NaN`.
-- **Truthy Values**: All other values, including non-empty strings, numbers (except 0), objects, arrays.
-
-```javascript
-// Examples
-if (0) {
-  console.log("Truthy");
-} else {
-  console.log("Falsy");
-} // Falsy
-if ("Hello") {
-  console.log("Truthy");
-} else {
-  console.log("Falsy");
-} // Truthy
-```
-
----
-
-## 🧮 Operators
-
-**File:** `operator.js`
-
-A detailed reference guide to performing operations on variables and values.
-
-- **Arithmetic**: `+`, `-`, `*`, `/`, `%` (Modulus), `**` (Exponentiation).
-- **Comparison**:
-  - Loose: `==`, `!=` (Checks value only)
-  - Strict: `===`, `!==` (Checks value AND type - **Recommended**)
-  - Relational: `>`, `<`, `>=`, `<=`
-- **Logical**:
-  - `&&` (AND): Returns true if both operands are true.
-  - `||` (OR): Returns true if at least one operand is true.
-  - `!` (NOT): Inverts the boolean value.
-- **Assignment**: `=`, `+=`, `-=`, `*=`, etc.
-- **Ternary Operator**: A shorthand for `if-else`.
-  ```javascript
-  let status = age >= 18 ? "Adult" : "Minor";
-  ```
-
----
-
-## 🔀 Control Flow
-
-**File:** `controllers.js`
-
-Managing the decision-making logic within your application.
-
-- **If-Else Statements**: Execute code based on conditions.
-- **Switch Statements**: Select one of many code blocks to be executed.
-- **Early Return Pattern**: A best practice to keep code clean by returning from a function as soon as a condition is met, avoiding deep nesting.
-
-```javascript
-// Early Return Example
-function checkScore(score) {
-  if (score > 90) return "Grade A";
-  if (score > 80) return "Grade B";
-  return "Grade C";
+function exampleFunction(param1, param2) {
+  // Function body
+  return result;
 }
 ```
 
 ---
 
-## 🔄 Loops
+## 🔧 Types of Functions
 
-**File:** `loops.js`
+### 1. Function Declaration
 
-Techniques for iterating over data and executing code repeatedly.
+Defined using the `function` keyword. Can be called before declaration due to hoisting.
 
-- **For Loop**: Best when you know how many times to loop.
-- **While Loop**: Loops through a block of code as long as a specified condition is true.
-- **Do-While Loop**: Similar to while, but guarantees the code block is executed at least once.
-- **Break & Continue**:
-  - `break`: Exits the loop entirely.
-  - `continue`: Skips the current iteration and proceeds to the next one.
+```javascript
+function abc() {
+  console.log("Function Declaration");
+}
+abc();
+```
+
+### 2. Function Expression
+
+Assigned to a variable. Not hoisted.
+
+```javascript
+let fnc = function() {
+  console.log("Function Expression");
+};
+fnc();
+```
+
+### 3. Arrow Function (ES6)
+
+Shorter syntax, no `this` binding.
+
+```javascript
+let fnc = () => {
+  console.log("Arrow Function");
+};
+fnc();
+```
 
 ---
 
-## 𝑓 Functions
+## 📝 Parameters vs Arguments
 
-**File:** `function.js`
-
-Modularizing code for reusability and better organization.
-
-### Types of Functions
-
-1. **Function Declaration**:
-   ```javascript
-   function greet() { ... }
-   ```
-2. **Function Expression**:
-   ```javascript
-   let greet = function() { ... };
-   ```
-3. **Arrow Function (ES6)**:
-   ```javascript
-   let greet = () => { ... };
-   ```
-
-> **Key Concept**: **Parameters** are the placeholders in the function definition, while **Arguments** are the actual values passed when calling the function.
-
-### Default Parameters
-
-Functions can have default values for parameters if no argument is provided.
+- **Parameters**: Names listed in the function definition (e.g., `name`, `price` in `function Movies(name, price)`).
+- **Arguments**: Real values passed to the function when called (e.g., `"Bahubali"`, `250`).
 
 ```javascript
-function greet(name = "Guest") {
-  return `Hello, ${name}!`;
+function Movies(name, price) {
+  console.log(`Movie Name: ${name}, Price: ${price}`);
 }
-console.log(greet()); // "Hello, Guest!"
-console.log(greet("Alice")); // "Hello, Alice!"
+Movies("Bahubali", 250); // Arguments
 ```
 
-### Rest Parameters
+---
 
-Allows a function to accept an indefinite number of arguments as an array.
+## 🔢 Default Parameters
+
+Allows setting default values for parameters if no argument is provided.
 
 ```javascript
-function sum(...numbers) {
-  return numbers.reduce((total, num) => total + num, 0);
+function abcd(b = 10, price = 1000) {
+  console.log(price, b);
 }
-console.log(sum(1, 2, 3)); // 6
-console.log(sum(4, 5, 6, 7)); // 22
+abcd(15); // Output: 1000 15
 ```
 
-### Higher-Order Functions
+**Example: Salary Function**
+
+```javascript
+function salary(name, sal = 25000) {
+  console.log(`Employee Name: ${name}, Salary: ${sal}`);
+  if (sal > 20000) {
+    console.log("Moje dariya....");
+  } else {
+    console.log("Garib saalo....");
+  }
+}
+salary("Jayre", 2000); // Uses default? No, passed 2000
+salary("Jayre", 30000);
+```
+
+---
+
+## 🌟 Rest Parameters
+
+Allows a function to accept an indefinite number of arguments as an array using `...`.
+
+```javascript
+function def(...numbers) {
+  console.log(numbers);
+}
+def(1, 2, 3, 4, 5); // Output: [1, 2, 3, 4, 5]
+```
+
+**Example: Salary with Multiple Salaries**
+
+```javascript
+function salary2(name, ...sal) {
+  console.log(`Employee Name: ${name}, Salaries: ${sal}`);
+  let total = 0;
+  for (let i of sal) {
+    total += i;
+  }
+  console.log(`Total Salary: ${total}`);
+}
+salary2("Jayre", 2000, 3000, 4000);
+```
+
+---
+
+## 🚪 Early Return
+
+Return from a function early to avoid deep nesting and improve readability.
+
+```javascript
+function getValue1(value) {
+  if (value < 25) return "Value is less than 25";
+  if (value < 50) return "Value is less than 50";
+  if (value < 75) return "Value is less than 75";
+  return "Value is 100 or more";
+}
+console.log(getValue1(80));
+```
+
+---
+
+## 🎯 First-Class Functions
+
+Functions can be treated as variables, passed as arguments, or returned from other functions.
+
+```javascript
+const card5 = function (product, price) {
+  console.log(`Adding ${product} with price ${price}`);
+};
+card5("S25 Ultra", 50000);
+```
+
+---
+
+## 🔄 Higher-Order Functions (HOF)
 
 Functions that take other functions as arguments or return functions.
 
 ```javascript
-// Function as argument
-function applyOperation(a, b, operation) {
-  return operation(a, b);
+function abcd(val) {
+  val(); // Takes function as argument
 }
-const add = (x, y) => x + y;
-console.log(applyOperation(5, 3, add)); // 8
+abcd(() => console.log("Hi"));
+```
 
-// Function returning function
-function multiplier(factor) {
-  return function (number) {
-    return number * factor;
-  };
+---
+
+## 🧹 Pure vs Impure Functions
+
+### Pure Function
+
+Always returns the same output for the same input and doesn't modify external state.
+
+```javascript
+function abcd_pure() {
+  console.log("Hello"); // No external modification
 }
-const double = multiplier(2);
-console.log(double(5)); // 10
+```
+
+### Impure Function
+
+May produce different outputs or modify external state.
+
+```javascript
+let a = 10;
+function abcd_impure() {
+  a++; // Modifies external variable
+  console.log("Value of a:", a);
+}
+```
+
+---
+
+## 🔒 Closures
+
+A function that has access to its outer (enclosing) function's variables even after the outer function has returned.
+
+```javascript
+function outer() {
+  let count = 0;
+  function inner() {
+    count++; // Accesses outer variable
+    console.log(count);
+  }
+  return inner;
+}
+let fnc = outer();
+fnc(); // Output: 1
+fnc(); // Output: 2
+```
+
+**Example: Bank Account**
+
+```javascript
+function bankAccount() {
+  let balance = 1000;
+  function deposit(amount) {
+    balance += amount;
+    console.log("Balance:", balance);
+  }
+  return deposit;
+}
+let myAccount = bankAccount();
+myAccount(500);
+myAccount(300);
+```
+
+---
+
+## 📍 Lexical Scope
+
+Variables are accessible based on their position in the code hierarchy.
+
+```javascript
+function outer1() {
+  let outerVar = "I am from outer function";
+  function inner1() {
+    let innerVar = "I am from inner function";
+    console.log(outerVar); // Can access outerVar
+    function mostInner() {
+      console.log(innerVar); // Can access innerVar
+      console.log(outerVar); // Can access outerVar
+    }
+    mostInner();
+  }
+  inner1();
+}
+outer1();
+```
+
+---
+
+## ⚡ Immediately Invoked Function Expressions (IIFE)
+
+Functions that are executed immediately after definition.
+
+```javascript
+(function () {
+  console.log("This is an IIFE function");
+})();
+```
+
+---
+
+## ⬆️ Hoisting
+
+Function declarations are moved to the top of their scope during compilation.
+
+```javascript
+abcde(); // Works due to hoisting
+
+function abcde() {
+  console.log("This is a hoisted function");
+}
+```
+
+Function expressions and arrow functions are not hoisted.
+
+---
+
+## 📋 Examples
+
+### Example 1: Function Declaration
+
+```javascript
+sayHello(); // ✅ Works
+
+function sayHello() {
+  console.log("Hello");
+}
+```
+
+### Example 2: Function Expression
+
+```javascript
+const sayHi = function () {
+  console.log("Hi");
+};
+sayHi();
+```
+
+### Example 3: Arrow Function
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+const addArrow = (a, b) => a + b;
+console.log(addArrow(5, 3)); // Output: 8
+```
+
+### Example 4: Parameters and Arguments
+
+```javascript
+function welcome(name) {
+  console.log("Welcome " + name);
+}
+welcome("user"); // Argument: "user"
+```
+
+### Example 5: Default Parameters
+
+```javascript
+function temp_user(name = "Guest") {
+  console.log("Hello " + name);
+}
+temp_user(); // Output: Hello Guest
+```
+
+### Example 6: Rest Parameters
+
+```javascript
+function number(...numbers) {
+  console.log(numbers);
+}
+number(1, 2, 3, 4, 5); // Output: [1, 2, 3, 4, 5]
+```
+
+### Example 7: Early Return
+
+```javascript
+function checkAge(age) {
+  if (age < 18) {
+    return "Too Young";
+  }
+  return "Access Granted";
+}
+console.log(checkAge(16)); // Output: Too Young
+```
+
+### Example 8: IIFE
+
+```javascript
+(function () {
+  console.log("IIFE executed");
+})();
 ```
 
 ---
@@ -263,4 +412,4 @@ git push -u origin main
 
 ---
 
-_Created for learning and revision purposes._ 🌟
+_Created for learning and revision purposes of JavaScript functions._ 🌟
