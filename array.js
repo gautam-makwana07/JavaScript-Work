@@ -193,22 +193,22 @@
 // if you want to show only expensive producat on your homepage
 // if you want to filter producat based on price
 
-let product_type = ["Mobile", "Tablet", "Laptop","Mouse", "Keyborad"];
-let filter_product_type = product_type.filter((type) => 
-    {
-    if (type === "Tablet" || type === "Mobile")
-    return true;
-});
-console.log(filter_product_type)
+// let product_type = ["Mobile", "Tablet", "Laptop","Mouse", "Keyborad"];
+// let filter_product_type = product_type.filter((type) => 
+//     {
+//     if (type === "Tablet" || type === "Mobile")
+//     return true;
+// });
+// console.log(filter_product_type)
 
 
-//reduce
-//reduce tyre j use karva ke jare ek single value calculate karvi hoy from array
-let total_price=[15.68,45,25,70,90,56]
-let final_price = total_price. reduce( (accumulator,val) => {
-return accumulator + val;
-},
-0); 
+// //reduce
+// //reduce tyre j use karva ke jare ek single value calculate karvi hoy from array
+// let total_price=[15.68,45,25,70,90,56]
+// let final_price = total_price. reduce( (accumulator,val) => {
+// return accumulator + val;
+// },
+// 0); 
 // intial value of accumulator
 // 0+ 10 => 10
 // 10 + 10 => 20
@@ -221,12 +221,93 @@ return accumulator + val;
 //ex.product ma thi total price calculate karvi hoy
 
 
-// 1.
-const prices1 = [200, 800, 1200, 450, 700];
+// 1.   
+// const prices1 = [200, 800, 1200, 450, 700];
 
-const total1 = prices1
-  .filter(price => price > 500)
-  .map(price => price * 0.9)
-  .reduce((sum, price) => sum + price, 0);
+// const total1 = prices1
+//   .filter(price => price > 500)
+//   .map(price => price * 0.9)
+//   .reduce((sum, price) => sum + price, 0);
 
-console.log("Q1 Total:", total1);
+// console.log("Q1 Total:", total1);
+
+
+// Find
+// find tyare j use karvu ke jare array mathi ek value find karvi hoy based on condition
+// find() return kare chhe array no element -- > callback no return value nahi
+// never returns what you return inside it
+// returns the array element itself -- not return array
+// .find() stops at the first match
+// It does not continue looping
+
+let producat = ["leptop","Mobile","Tablet","Dasktop","Smart-watch"];
+let find_product = producat.find((item) => {
+  //consol.log ("Can't find product ");
+  if (item === "Table") {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+);
+
+// some
+// check kare chhe ke array ma koi pan ek item codition satisfy kare chhe ke nahi
+// condition true aave tyare stop kare
+// some() vs find() -- > some() can't return you value its return true or false, find() return value of array
+// give ans in true and false
+let marks1 = [10, 20, 35, 90];
+let any = marks1. some( (val) =>{
+if (val > 85) return true;
+// if (val < 85) retur "need improvement";
+});
+console.log(any)
+//use case --> chack if some product are out of stock in your card 
+
+
+//every
+// check kare chhe ke array ma baddha j items condition satisfy kare chhe ke nahi
+// true - baha items condition match kare
+// false -- ek pan fail thay to
+let def =[20, 30, 90, 45];
+let num = def.every(function(val) {
+  return val < 40;
+});
+// use case -- > check all student is pass or not
+// some(), find(), filter(), every()
+// let products = ["Tablet", "Mobile", "Laptop", "Mobile"]
+// method //-- > condition -- > output
+// .some() // -- > item === "Mobile" -- > true
+// .find() //-- > item === "Mobile" -- > "Mobile"
+// .filter() //-- > item === "Mobile" -- > ["Mobile", "Mobile"]
+//every()
+
+// // Destructuring oprator -- give value to variable (ex. we don't use every time arr1[1], just save it into variable let [ ,k] =arr1)
+// let arr4 = [1, 2, 3, 4, 5]
+// // let j = arr4[0];
+// // let k = arr4[2];
+// let [ j, , k] = arr4; // -> destructuring
+// // let [j, , k] = arr;
+// console. log(k);
+let user_data = ["test", "test@gmail.com", "Male", "Surat"];
+
+// Destructuring
+let [name1, email, gender, city] = user_data;
+
+console.log("Name:", name1);
+console.log("Email:", email);
+console.log("Gender:", gender);
+console.log("City:", city);
+
+
+//spread oprator  --> copy value from main array
+let arr8 = [1,2,3,4,5,6,7,8];
+// let arr4 = arr3;
+let arr9 = [...arr8];
+//... --> rest --> into function
+//... --> spread --> into array and object
+let temp_arr = [1,2,3,4];
+let temp_arr2 = [5,6,7,8,9];
+let mix_arr = [...temp_arr,...temp_arr2];
+
