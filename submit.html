@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a Card</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      input {
+        display: block;
+        margin: 5px 0;
+        padding: 5px;
+        width: 250px;
+      }
+
+      button {
+        padding: 5px 10px;
+        margin-top: 5px;
+      }
+
+      .dp-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        align-self: center; /* Image center ma aavse */
+        margin-bottom: 10px;
+      }
+
+      .card {
+        display: flex;
+       flex-direction: column;
+        width: 350px;
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 30px;
+        gap: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="text" placeholder="Paste link for profile image" />
+      <input type="text" placeholder="Name" />
+      <input type="text" placeholder="Bio" />
+      <input type="email" placeholder="Email" />
+      <input type="text" placeholder="Phone Number" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script src="submit.js"></script>
+  </body>
+</html>
