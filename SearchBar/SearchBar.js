@@ -121,44 +121,35 @@ const users = [
   },
 ];
 
-
-
-
 // div (.card) --> img (.img) --> div(.blur) -->div(.content) [h2,p(.card-text)]
-
 
 let container = document.querySelector(".card-container");
 
+function showusers(data) {
+  console.log(data);
+  data.forEach((user) => {
+    console.log(user);
+    // create a card
 
+    let card = document.createElement("card");
+    card.classList.add("card");
+    let img = document.createElement("img");
+    img.classList.add("img");
+    img.src = user.pic;
+    let blur_div = document.createElement("div");
+    blur_div.classList.add("blur");
 
-function showusers(data){
-    console.log(data);
-    data.forEach((user)=>{
-        console.log(user);
-        // create a card
+    let content = document.createElement("div");
+    content.classList.add("content");
 
-let card = document.createElement("card");
-card.classList.add("card");
-let img = document.createElement("img");
-img.classList.add("img");
-img.src = user.pic;
-let blur_div = document.createElement("div");
-blur_div.classList.add("blur");
+    let h2 = document.createElement("h2");
+    h2.textContent = user.name;
+    let p = document.createElement("p");
+    p.textContent = user.bio;
+    p.classList.add("card-text");
+    p.textContent = user.bio;
 
-let content = document.createElement("div");
-content.classList.add("content");
-
-let h2 = document.createElement("h2");
-h2.textContent = user.name;
-let p = document.createElement("p");
-p.textContent = user.bio;
-p.classList.add("card-text");
-p.textContent = user.bio;
-
-
-
-
-// appendchild
+    // appendchild
     container.appendChild(card);
     card.appendChild(img);
     card.appendChild(blur_div);
@@ -166,10 +157,8 @@ p.textContent = user.bio;
     content.appendChild(h2);
     content.appendChild(p);
 
-
     console.log(container);
-
-    })
+  });
 }
 
 showusers(users);
@@ -177,17 +166,17 @@ showusers(users);
 //search bar
 let inp = document.querySelector("input");
 
-inp.addEventListener("input",()=>{
-    console.log(inp.value);
+inp.addEventListener("input", () => {
+  console.log(inp.value);
 
-    let new_user = users.filter((data) =>{
-        let taxt = inp.value;
-        let value = taxt.charAt(0).toUpperCase() + taxt.slice(1);
-        return data.name.startsWith(value);
-    })
+  let new_user = users.filter((data) => {
+    let taxt = inp.value;
+    let value = taxt.charAt(0).toUpperCase() + taxt.slice(1);
+    return data.name.startsWith(value);
+  });
 
-    container.innerHTML = "";
+  container.innerHTML = "";
 
-    console.log(new_user);
-    showusers(new_user);
+  console.log(new_user);
+  showusers(new_user);
 });
